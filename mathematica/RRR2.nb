@@ -1,0 +1,166 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      6013,        157]
+NotebookOptionsPosition[      5464,        135]
+NotebookOutlinePosition[      5849,        152]
+CellTagsIndexPosition[      5806,        149]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"proj1", "=", "fourierMagProj"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"proj2", "=", "posSupportProj"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"norm", "=", "L2"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.728221338417973*^9, 3.7282213678987827`*^9}, {
+  3.72833933041397*^9, 3.7283393591761513`*^9}, {3.728340089988879*^9, 
+  3.7283400930418587`*^9}, {3.728341018213485*^9, 3.728341021049656*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"supportSize", "=", "100"}], ";"}]], "Input",
+ CellChangeTimes->{{3.728383526443303*^9, 3.72838354547705*^9}, {
+  3.7283836236530743`*^9, 3.728383624599077*^9}, {3.728383661469633*^9, 
+  3.728383672299776*^9}, {3.7283840791427813`*^9, 3.728384106299522*^9}, {
+  3.728384142529545*^9, 3.728384143275751*^9}, {3.7283841881625137`*^9, 
+  3.728384188284511*^9}, {3.728384280817236*^9, 3.7283842810018663`*^9}, {
+  3.728384314754664*^9, 3.7283843149526453`*^9}, {3.728384358576435*^9, 
+  3.728384380326672*^9}, {3.728384411025071*^9, 3.7283844116397533`*^9}, {
+  3.728384442641745*^9, 3.728384444833188*^9}, {3.7283845327047863`*^9, 
+  3.728384593612221*^9}, {3.728384904106122*^9, 3.728384904497078*^9}, {
+  3.7283849788596478`*^9, 3.728384979738674*^9}, {3.728385026348674*^9, 
+  3.728385028210306*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[Beta]", "=", ".5"}], ";"}]], "Input",
+ CellChangeTimes->{{3.72814493282592*^9, 3.728144934411104*^9}, {
+  3.728339946763357*^9, 3.728339946910548*^9}, {3.728340026139038*^9, 
+  3.728340026304735*^9}, {3.728340099355913*^9, 3.728340099509653*^9}, {
+  3.7283403559363203`*^9, 3.728340356086833*^9}, {3.728340493375074*^9, 
+  3.728340493586253*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"x", "=", "rand"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"err", "=", 
+   RowBox[{"{", "}"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.728144942009811*^9, 3.728144949720705*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Do", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"p1", "=", 
+     RowBox[{"proj1", "[", "x", "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"p2", "=", 
+     RowBox[{"proj2", "[", 
+      RowBox[{
+       RowBox[{"2", "p1"}], "-", "x"}], "]"}]}], ";", "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", 
+    RowBox[{"diff", "=", 
+     RowBox[{"p2", "-", "p1"}]}], ";", "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", 
+    RowBox[{"x", "+=", 
+     RowBox[{"\[Beta]", " ", "diff"}]}], ";", "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", 
+    RowBox[{"AppendTo", "[", 
+     RowBox[{"err", ",", 
+      RowBox[{"norm", "[", "diff", "]"}]}], "]"}], ";", "\[IndentingNewLine]",
+     "\[IndentingNewLine]", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Last", "[", "err", "]"}], "<", ".01"}], ",", 
+      RowBox[{"Break", "[", "]"}]}], "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", ",", 
+   RowBox[{"{", "2", "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.728144953114552*^9, 3.72814498313208*^9}, {
+   3.728145094789261*^9, 3.72814518411582*^9}, 3.728145819761505*^9, {
+   3.7283393891496763`*^9, 3.728339394767035*^9}, 3.728339439618197*^9, {
+   3.728339779917883*^9, 3.7283398103988237`*^9}, {3.728339849000235*^9, 
+   3.728339849646598*^9}, {3.728339908516057*^9, 3.728339908743692*^9}, {
+   3.728340363338976*^9, 3.728340363535266*^9}, {3.728340422792479*^9, 
+   3.728340422997177*^9}, 3.728340951653679*^9, 3.728341007726198*^9, 
+   3.728341171979672*^9, {3.7283412134475822`*^9, 3.728341260696032*^9}, {
+   3.728384113734022*^9, 3.728384114233782*^9}, {3.728384196135808*^9, 
+   3.7283842340164022`*^9}, {3.728384335892264*^9, 3.728384336412877*^9}, 
+   3.7283844534986057`*^9, 3.728384499944703*^9, {3.728384912734332*^9, 
+   3.7283849564143972`*^9}, 3.728385050396229*^9}],
+
+Cell[BoxData[
+ RowBox[{"ListPlot", "[", 
+  RowBox[{"err", ",", 
+   RowBox[{"Joined", "\[Rule]", "True"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"0", ",", ".15"}], "}"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.7281452084233427`*^9, 3.728145221499072*^9}, {
+  3.728339461538987*^9, 3.728339478583494*^9}, {3.728339648610231*^9, 
+  3.7283396493003283`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"GraphicsGrid", "[", 
+  RowBox[{"{", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"renderSupport", "[", "p1", "]"}], ",", 
+     RowBox[{"renderSupport", "[", "p2", "]"}], ",", 
+     RowBox[{"renderSupport", "[", "x", "]"}]}], "}"}], "}"}], "]"}]], "Input",\
+
+ CellChangeTimes->{{3.728145293364649*^9, 3.728145295902858*^9}, {
+   3.728145637363737*^9, 3.728145638791546*^9}, 3.728145765691506*^9, 
+   3.728339417963271*^9, {3.728339595243012*^9, 3.7283396182055817`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"renderSupportInv", "[", "p1", "]"}]], "Input",
+ CellChangeTimes->{{3.728384868324786*^9, 3.7283848792798243`*^9}, {
+  3.728385002645938*^9, 3.728385003380015*^9}}]
+},
+WindowSize->{1072, 752},
+WindowMargins->{{Automatic, 34}, {Automatic, 0}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"10.1 for Mac OS X x86 (32-bit, 64-bit Kernel) (March 23, \
+2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 498, 11, 119, "Input"],
+Cell[1059, 33, 834, 13, 43, "Input"],
+Cell[1896, 48, 383, 7, 44, "Input"],
+Cell[2282, 57, 227, 6, 69, "Input"],
+Cell[2512, 65, 1867, 39, 357, "Input"],
+Cell[4382, 106, 393, 9, 43, "Input"],
+Cell[4778, 117, 492, 11, 43, "Input"],
+Cell[5273, 130, 187, 3, 43, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
