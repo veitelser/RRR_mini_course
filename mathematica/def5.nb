@@ -1,0 +1,192 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      6053,        183]
+NotebookOptionsPosition[      5727,        167]
+NotebookOutlinePosition[      6113,        184]
+CellTagsIndexPosition[      6070,        181]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"sumProj", "[", 
+    RowBox[{"x_", ",", "s_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "y", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"y", "=", 
+       RowBox[{"Flatten", "[", "x", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"x", "+", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"s", "-", 
+          RowBox[{"Total", "[", "y", "]"}]}], ")"}], "/", 
+        RowBox[{"Length", "[", "y", "]"}]}]}]}]}], "\[IndentingNewLine]", 
+    "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"equiPartProj", "[", "x_", "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"y", "=", "x"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Do", "[", 
+       RowBox[{
+        RowBox[{"y", "=", 
+         RowBox[{"Transpose", "[", 
+          RowBox[{
+           RowBox[{"Map", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"sumProj", "[", 
+               RowBox[{"#", ",", 
+                RowBox[{"1", "/", 
+                 RowBox[{"dims", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}]}]}], "]"}], "&"}], ",", 
+             RowBox[{"Transpose", "[", 
+              RowBox[{"y", ",", 
+               RowBox[{"trans", "[", 
+                RowBox[{"[", "i", "]"}], "]"}]}], "]"}]}], "]"}], ",", 
+           RowBox[{"trans", "[", 
+            RowBox[{"[", "i", "]"}], "]"}]}], "]"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", 
+          RowBox[{"Length", "[", "dims", "]"}]}], "}"}]}], "]"}], ";", 
+      "\[IndentingNewLine]", "y"}]}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"sparseProj", "[", "x_", "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"y", ",", "p"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"y", "=", 
+       RowBox[{"Flatten", "[", "x", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"p", "=", 
+       RowBox[{"Ordering", "[", 
+        RowBox[{"y", ",", 
+         RowBox[{"-", "sparsity"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"ArrayReshape", "[", 
+       RowBox[{
+        RowBox[{"ReplacePart", "[", 
+         RowBox[{
+          RowBox[{"Table", "[", 
+           RowBox[{"0", ",", 
+            RowBox[{"{", 
+             RowBox[{"Length", "[", "y", "]"}], "}"}]}], "]"}], ",", 
+          RowBox[{"MapThread", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"#1", "\[Rule]", "#2"}], "&"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"p", ",", 
+              RowBox[{"y", "[", 
+               RowBox[{"[", "p", "]"}], "]"}]}], "}"}]}], "]"}]}], "]"}], ",", 
+        RowBox[{"Dimensions", "[", "x", "]"}]}], "]"}]}]}], 
+    "\[IndentingNewLine]", "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"rand", ":=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"#", "/", 
+       RowBox[{"Total", "[", 
+        RowBox[{"Flatten", "[", "#", "]"}], "]"}]}], ")"}], "&"}], "[", 
+    RowBox[{"RandomReal", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", "1"}], "}"}], ",", "dims"}], "]"}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"L2", "[", "x_", "]"}], ":=", 
+  RowBox[{"Sqrt", "[", 
+   RowBox[{"Mean", "[", 
+    RowBox[{
+     RowBox[{"Flatten", "[", "x", "]"}], "^", "2"}], "]"}], "]"}]}]}], "Input",\
+
+ CellChangeTimes->{{3.7295302677337027`*^9, 3.729530268916029*^9}, {
+   3.729530307744371*^9, 3.729530318539393*^9}, {3.729530350132717*^9, 
+   3.729530380258919*^9}, {3.729530417197233*^9, 3.729530418599123*^9}, {
+   3.729530762539109*^9, 3.729530764544504*^9}, 3.729530796445477*^9, {
+   3.729532904174808*^9, 3.729532928729973*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"n", "=", "6"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"sparsity", "=", "11"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"dims", "=", 
+  RowBox[{"Range", "[", 
+   RowBox[{
+    RowBox[{"n", "-", 
+     RowBox[{"Ceiling", "[", 
+      RowBox[{"n", "/", "2"}], "]"}], "+", "1"}], ",", "n"}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"trans", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"ReplacePart", "[", 
+      RowBox[{
+       RowBox[{"Range", "[", 
+        RowBox[{"Length", "[", "dims", "]"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"1", "\[Rule]", "i"}], ",", 
+         RowBox[{"i", "\[Rule]", "1"}]}], "}"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", 
+       RowBox[{"Length", "[", "dims", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"lcm", "=", 
+  RowBox[{"Apply", "[", 
+   RowBox[{"LCM", ",", "dims"}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.729530542086308*^9, 3.729530602317494*^9}, 
+   3.729530741934751*^9, {3.729531418587851*^9, 3.7295314219019613`*^9}, {
+   3.7295320457665043`*^9, 3.729532046250353*^9}, {3.7295320821241083`*^9, 
+   3.729532085142682*^9}, {3.729611204940804*^9, 3.729611207971649*^9}}]
+},
+WindowSize->{808, 849},
+WindowMargins->{{Automatic, 166}, {Automatic, 22}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"10.1 for Mac OS X x86 (32-bit, 64-bit Kernel) (March 23, \
+2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 3859, 107, 569, "Input"],
+Cell[4420, 129, 1303, 36, 219, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
