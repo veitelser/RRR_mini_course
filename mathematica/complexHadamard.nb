@@ -1,0 +1,234 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7460,        225]
+NotebookOptionsPosition[      6868,        202]
+NotebookOutlinePosition[      7253,        219]
+CellTagsIndexPosition[      7210,        216]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"unitaryProj", "[", "x_", "]"}], ":=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"Sqrt", "[", "size", "]"}], 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"#", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], ".", 
+        RowBox[{"Conjugate", "[", 
+         RowBox[{"Transpose", "[", 
+          RowBox[{"#", "[", 
+           RowBox[{"[", "3", "]"}], "]"}], "]"}], "]"}]}], ")"}]}], "&"}], 
+    "[", 
+    RowBox[{"SingularValueDecomposition", "[", "x", "]"}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"uniformMagProj", "[", "x_", "]"}], ":=", 
+   RowBox[{"Map", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"#", "\[Equal]", "0"}], ",", "1", ",", 
+        RowBox[{"#", "/", 
+         RowBox[{"Abs", "[", "#", "]"}]}]}], "]"}], "&"}], ",", "x", ",", 
+     RowBox[{"{", "2", "}"}]}], "]"}]}], "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"rand", ":=", 
+   RowBox[{"proj1", "[", 
+    RowBox[{"RandomComplex", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "1"}], "-", "I"}], ",", 
+        RowBox[{"1", "+", "I"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"size", ",", "size"}], "}"}]}], "]"}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"L2", "[", "x_", "]"}], ":=", 
+   RowBox[{"Sqrt", "[", 
+    RowBox[{"Mean", "[", 
+     RowBox[{
+      RowBox[{"Abs", "[", 
+       RowBox[{"Flatten", "[", "x", "]"}], "]"}], "^", "2"}], "]"}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"phases", "[", "x_", "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "y", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"y", "=", 
+      RowBox[{"Transpose", "[", 
+       RowBox[{"x", ".", 
+        RowBox[{"DiagonalMatrix", "[", 
+         RowBox[{"Conjugate", "[", 
+          RowBox[{"x", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], "]"}], "]"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Mod", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Arg", "[", 
+         RowBox[{"Transpose", "[", 
+          RowBox[{"y", ".", 
+           RowBox[{"DiagonalMatrix", "[", 
+            RowBox[{"Conjugate", "[", 
+             RowBox[{"y", "[", 
+              RowBox[{"[", "1", "]"}], "]"}], "]"}], "]"}]}], "]"}], "]"}], 
+        "/", 
+        RowBox[{"(", 
+         RowBox[{"2", "Pi"}], ")"}]}], ",", "1"}], "]"}]}]}], 
+   "\[IndentingNewLine]", "]"}]}]}], "Input",
+ CellChangeTimes->{{3.729952686550288*^9, 3.729952790457528*^9}, 
+   3.729953185717709*^9, {3.72995357490088*^9, 3.7299535761990747`*^9}, {
+   3.729953770042502*^9, 3.729953774844768*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"proj1", "=", "uniformMagProj"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"proj2", "=", "unitaryProj"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"norm", "=", "L2"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.729952823804006*^9, 3.729952836797399*^9}, {
+  3.729953153055583*^9, 3.729953155947304*^9}, {3.729953728792314*^9, 
+  3.7299537315927258`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"size", "=", "7"}], ";"}]], "Input",
+ CellChangeTimes->{{3.7299528874054956`*^9, 3.7299528909249697`*^9}, {
+   3.729953088579645*^9, 3.729953088905004*^9}, 3.729953204582383*^9, {
+   3.729953599556747*^9, 3.729953599726019*^9}, 3.729954014100439*^9, {
+   3.7299541376796*^9, 3.729954137879395*^9}, {3.729954296683323*^9, 
+   3.729954297646846*^9}, 3.72995462911302*^9, {3.729954667842442*^9, 
+   3.729954668254923*^9}, {3.729954726834937*^9, 3.7299547270765533`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[Beta]", "=", ".5"}], ";"}]], "Input",
+ CellChangeTimes->{
+  3.729953063855172*^9, {3.729953136076099*^9, 3.729953136184454*^9}, 
+   3.729953209579855*^9}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"x", "=", "rand"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"err", "=", 
+   RowBox[{"{", "}"}]}], ";"}]}], "Input"],
+
+Cell[BoxData[
+ RowBox[{"Do", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"p1", "=", 
+     RowBox[{"proj1", "[", "x", "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"p2", "=", 
+     RowBox[{"proj2", "[", 
+      RowBox[{
+       RowBox[{"2", "p1"}], "-", "x"}], "]"}]}], ";", "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", 
+    RowBox[{"diff", "=", 
+     RowBox[{"p2", "-", "p1"}]}], ";", "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", 
+    RowBox[{"x", "+=", 
+     RowBox[{"\[Beta]", " ", "diff"}]}], ";", "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", 
+    RowBox[{"AppendTo", "[", 
+     RowBox[{"err", ",", 
+      RowBox[{"norm", "[", "diff", "]"}]}], "]"}], ";", "\[IndentingNewLine]",
+     "\[IndentingNewLine]", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Last", "[", "err", "]"}], "<", 
+       RowBox[{"10", "^", 
+        RowBox[{"(", 
+         RowBox[{"-", "9"}], ")"}]}]}], ",", 
+      RowBox[{"Break", "[", "]"}]}], "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", ",", 
+   RowBox[{"{", "20000", "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.729952883106818*^9, 3.729952910844366*^9}, 
+   3.729953015800921*^9, {3.7299530764385853`*^9, 3.7299530974088583`*^9}, 
+   3.729953222638341*^9, 3.729953740679894*^9, {3.7299538073195868`*^9, 
+   3.729953855890244*^9}, {3.729953935436466*^9, 3.7299539357515717`*^9}, {
+   3.729954305126934*^9, 3.7299543412511997`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"ListLogPlot", "[", 
+  RowBox[{"err", ",", 
+   RowBox[{"Joined", "\[Rule]", "True"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{"Raster", "[", 
+   RowBox[{
+    RowBox[{"phases", "[", "p1", "]"}], ",", 
+    RowBox[{"ColorFunction", "\[Rule]", "Hue"}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.729953244796874*^9, 3.729953369517496*^9}, 
+   3.729953509209591*^9, {3.729953883668692*^9, 3.729953883822844*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Histogram", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{"phases", "[", "p1", "]"}], "]"}], ",", 
+   RowBox[{"{", ".01", "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.729953901361755*^9, 3.729953926843265*^9}}]
+},
+WindowSize->{808, 850},
+WindowMargins->{{391, Automatic}, {Automatic, 0}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"10.1 for Mac OS X x86 (32-bit, 64-bit Kernel) (March 23, \
+2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 2775, 83, 444, "Input"],
+Cell[3336, 105, 446, 11, 119, "Input"],
+Cell[3785, 118, 501, 8, 43, "Input"],
+Cell[4289, 128, 191, 5, 44, "Input"],
+Cell[4483, 135, 161, 5, 69, "Input"],
+Cell[4647, 142, 1446, 35, 357, "Input"],
+Cell[6096, 179, 177, 4, 43, "Input"],
+Cell[6276, 185, 337, 7, 43, "Input"],
+Cell[6616, 194, 248, 6, 43, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
